@@ -1,0 +1,30 @@
+{% extends "base.html" %} {% block title %}Home{% endblock %}{% block content %}
+<!--<h1>This is my homepage</h1>-->
+<h1 align="center">Notes</h1>
+<ul class="list-group list-group-flush" id="notes">
+    {% for note in user.notes %}
+        <li class="list-group-item">
+<!--            <div class="floatleft">-->
+<!--            <li><a href="#">{{ note.data }}</a></li>-->
+                {{ note.data }}
+
+                <button type="button" class="close" onClick="deleteNote({{ note.id }})">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+<!--            </div>-->
+<!--            <div class="floatright">-->
+<!--&lt;!&ndash;                <li><a href="#">{{ note.date }}</a></li>&ndash;&gt;-->
+<!--                {{ note.date }}-->
+<!--&lt;!&ndash;                <li><a href="#">Hello3</a></li>&ndash;&gt;-->
+<!--            </div>-->
+        </li>
+    {% endfor %}
+</ul>
+<form method="POST">
+    <textarea name="note" id="note" class="form-control"></textarea>
+    <br />
+    <div align="center">
+        <button type="submit" class="btn btn-primary">Add Note</button>
+    </div>
+</form>
+{% endblock %}
