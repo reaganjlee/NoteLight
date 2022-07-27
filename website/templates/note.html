@@ -1,0 +1,16 @@
+{% extends "base.html" %} {% block title %}Note{% endblock %}{% block content %}
+<!--<h1>starterNote</h1>-->
+<br />
+<!--<h2 align="left">🙌 Note</h2>-->
+<h2 align="left">🙌 Viewing Note </h2>
+<h1 align="center">{{ note.note_title }}</h1>
+<!--<p>{{ note.data }}</p>-->
+
+<!--<h2>breaker p below</h2>-->
+<p>{{ (note.data|safe) }}</p>
+<!--I can make it had a rich text editor and use pre, or I could just try to make the line break filter work-->
+
+<!--<h2>breaker; pre below</h2>-->
+<!--<pre>{{ note.data|safe }}</pre>-->
+
+{% endblock %}

@@ -1,12 +1,18 @@
 {% extends "base.html" %} {% block title %}Home{% endblock %}{% block content %}
+<!--{{ ckeditor.load(pkg_type="full") }}-->
 <!--<h1>This is my homepage</h1>-->
+<br />
+<h2 align="left">{{ user.firstName }}'s Notes</h2>
 <h1 align="center">Notes</h1>
 <ul class="list-group list-group-flush" id="notes">
     {% for note in user.notes %}
         <li class="list-group-item">
 <!--            <div class="floatleft">-->
 <!--            <li><a href="#">{{ note.data }}</a></li>-->
-                {{ note.data }}
+<!--                {{ note.note_title }}-->
+<!--                {{ note.data }}-->
+<!--            /view-note?id={{ note.id }}-->
+                <a class="note-link" href="{{ url_for('views.viewnote', noteid=note.id) }}">{{ note.note_title }}</a>
 
                 <button type="button" class="close" onClick="deleteNote({{ note.id }})">
                     <span aria-hidden="true">&times;</span>
@@ -21,9 +27,17 @@
     {% endfor %}
 </ul>
 <form method="POST">
+    <input type="text" name="note_title" id="note_title" placeholder="Untitled" class="form-control" />
     <textarea name="note" id="note" class="form-control"></textarea>
+<!--    <br />-->
+<!--    {{ ckeditor.create() }}-->
+<!--    <textarea name="note" id="summernote"></textarea>-->
+    <!-- Create the editor container -->
+<!--    <div type="text" name="note_input" id="quill_editor" class="form-group"></div>-->
+<!--        <input type="hidden" id="quill_html" name="note" />-->
     <br />
     <div align="center">
+
         <button type="submit" class="btn btn-primary">Add Note</button>
     </div>
 </form>
