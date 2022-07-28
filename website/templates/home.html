@@ -39,7 +39,7 @@
 </ul>
 <form method="POST">
     <input type="text" name="note_title" id="note_title" placeholder="Untitled" class="form-control" />
-    <textarea name="note" id="note" class="form-control"></textarea>
+    <textarea name="note" id="note" class="form-control" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'></textarea>
 <!--    <br />-->
 <!--    {{ ckeditor.create() }}-->
 <!--    <textarea name="note" id="summernote"></textarea>-->
