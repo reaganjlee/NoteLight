@@ -1,0 +1,22 @@
+/* * {
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+  } */
+
+.inline {
+  display: inline;
+}
+
+.link-button {
+  background: none;
+  border: none;
+  color:inherit;
+  cursor: pointer;
+  font-size: inherit;
+  font-family:inherit;
+}
+.link-button:focus {
+   outline: 5px auto -webkit-focus-ring-color;
+}
+/* .link-button:active {
+  color:red;
+} * /

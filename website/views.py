@@ -12,9 +12,16 @@ views = Blueprint("views", __name__)
 def home():
 #    return "<h1>Test</h1>"
     if request.method == "POST":
+        print("this is where it goes")
         note = request.form.get("note")
-        print(note)
+        if request.form.__contains__("new_note"):
+        # if request.get("name") == "new_note":
+            print("It works!")
+        else:
+            print("Riperoni no name ")
+        # Fixes newlines being replaced by single spaces in html
         note = note.replace("\n", "<br \>")
+
         note_title = request.form.get("note_title")
         if note_title == "":
             note_title = "Untitled"
@@ -31,8 +38,10 @@ def home():
 
 # @views.route(note.note_title+hashlib.sha256(note.encode()), methods=["GET"])
 # /viewnote/<noteid>
-@views.route("/viewnote/<noteid>", methods=["GET"])
-def viewnote(noteid):
+# @views.route("/viewnote", methods=["GET"])
+@views.route("/viewnote", methods=["POST"])
+def viewnote():
+    noteid = request.form.get("hidden_note_id")
     # return f'{ noteid } is the note id'
     note = Note.query.get(noteid)
     return render_template("note.html", user=current_user, note=note)

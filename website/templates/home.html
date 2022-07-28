@@ -12,7 +12,18 @@
 <!--                {{ note.note_title }}-->
 <!--                {{ note.data }}-->
 <!--            /view-note?id={{ note.id }}-->
-                <a class="note-link" href="{{ url_for('views.viewnote', noteid=note.id) }}">{{ note.note_title }}</a>
+<!--                <a class="note-link" href="{{ url_for('views.viewnote', noteid=note.id) }}">{{ note.note_title }}</a>-->
+
+<!--                <form action="your_url" method="post">-->
+<!--                    <button type="submit" name="your_name" value="your_value" class="btn-link">{{ note.note_title }}</button>-->
+<!--                </form>-->
+                <form method="POST" action="viewnote" class="inline">
+                    <input type="hidden" name="hidden_note_id" value="{{note.id}}">
+                    <button type="submit" name="view_note_btn" class="link-button">
+                        {{ note.note_title }}
+                    </button>
+                </form>
+<!--            <button type="submit" name="new_note" class="btn btn-primary">Add Note</button>-->
 
                 <button type="button" class="close" onClick="deleteNote({{ note.id }})">
                     <span aria-hidden="true">&times;</span>
@@ -37,8 +48,7 @@
 <!--        <input type="hidden" id="quill_html" name="note" />-->
     <br />
     <div align="center">
-
-        <button type="submit" class="btn btn-primary">Add Note</button>
+        <button type="submit" name="new_note" class="btn btn-primary">Add Note</button>
     </div>
 </form>
 {% endblock %}
