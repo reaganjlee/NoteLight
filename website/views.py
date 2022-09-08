@@ -46,6 +46,13 @@ def viewnote():
     note = Note.query.get(noteid)
     return render_template("note.html", user=current_user, note=note)
 
+@views.route("/testing", methods=["POST"])
+def go_back():
+    # noteid = request.form.get("hidden_note_id")
+    # return f'{ noteid } is the note id'
+    # note = Note.query.get(noteid)
+    return render_template("home.html", user=current_user)
+
 @views.route("/delete-note", methods=["POST"])
 def delete_note():
     note = json.loads(request.data)

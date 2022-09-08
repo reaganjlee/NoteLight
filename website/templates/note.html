@@ -2,12 +2,21 @@
 <!--<h1>starterNote</h1>-->
 <br />
 <!--<h2 align="left">🙌 Note</h2>-->
-<h2 align="left">🙌 Viewing Note </h2>
+<!-- <h2 align="left">Viewing Note </h2>
+<a class="" id="back-btn" href="/">&lt; Back</a> -->
+<form method="POST" action="testing" class="inline">
+    <!-- <input type="hidden" name="go_back_name" value=""> -->
+    <button type="submit" name="go_back_btn" class="link-button">
+        <!-- &lt; Back -->
+        
+        <h4 align="left"><i class="fa fa-angle-left" aria-hidden="true"></i> Back</h4>
+    </button>
+</form>
 <h1 align="center">{{ note.note_title }}</h1>
 <!--<p>{{ note.data }}</p>-->
 
 <!--<h2>breaker p below</h2>-->
-<p class="view-text">{{ (note.data|safe) }}</p>
+<p class="view-text" contenteditable="True">{{ (note.data|safe) }}</p>
 <!--I can make it had a rich text editor and use pre, or I could just try to make the line break filter work-->
 
 <!--<h2>breaker; pre below</h2>-->
