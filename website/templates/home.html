@@ -1,51 +1,26 @@
 {% extends "base.html" %} {% block title %}Home{% endblock %}{% block content %}
-<!--{{ ckeditor.load(pkg_type="full") }}-->
-<!--<h1>This is my homepage</h1>-->
 <br />
 <h2 align="left">{{ user.firstName }}'s Notes</h2>
 <h1 align="center">Notes</h1>
 <ul class="list-group list-group-flush" id="notes">
     {% for note in user.notes %}
         <li class="list-group-item">
-<!--            <div class="floatleft">-->
-<!--            <li><a href="#">{{ note.data }}</a></li>-->
-<!--                {{ note.note_title }}-->
-<!--                {{ note.data }}-->
-<!--            /view-note?id={{ note.id }}-->
-<!--                <a class="note-link" href="{{ url_for('views.viewnote', noteid=note.id) }}">{{ note.note_title }}</a>-->
-
-<!--                <form action="your_url" method="post">-->
-<!--                    <button type="submit" name="your_name" value="your_value" class="btn-link">{{ note.note_title }}</button>-->
-<!--                </form>-->
                 <form method="POST" action="viewnote" class="inline">
                     <input type="hidden" name="hidden_note_id" value="{{note.id}}">
                     <button type="submit" name="view_note_btn" class="link-button">
                         {{ note.note_title }}
                     </button>
                 </form>
-<!--            <button type="submit" name="new_note" class="btn btn-primary">Add Note</button>-->
 
                 <button type="button" class="close" onClick="deleteNote({{ note.id }})">
                     <span aria-hidden="true">&times;</span>
                 </button>
-<!--            </div>-->
-<!--            <div class="floatright">-->
-<!--&lt;!&ndash;                <li><a href="#">{{ note.date }}</a></li>&ndash;&gt;-->
-<!--                {{ note.date }}-->
-<!--&lt;!&ndash;                <li><a href="#">Hello3</a></li>&ndash;&gt;-->
-<!--            </div>-->
         </li>
     {% endfor %}
 </ul>
 <form method="POST">
     <input type="text" name="note_title" id="note_title" placeholder="Untitled" class="form-control" />
     <textarea name="note" id="note" class="form-control" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'></textarea>
-<!--    <br />-->
-<!--    {{ ckeditor.create() }}-->
-<!--    <textarea name="note" id="summernote"></textarea>-->
-    <!-- Create the editor container -->
-<!--    <div type="text" name="note_input" id="quill_editor" class="form-group"></div>-->
-<!--        <input type="hidden" id="quill_html" name="note" />-->
     <br />
     <div align="center">
         <button type="submit" name="new_note" class="btn btn-primary">Add Note</button>

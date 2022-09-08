@@ -3,14 +3,12 @@ from flask_login import login_required, current_user
 from .models import Note
 from . import db
 import json
-import hashlib
 
 views = Blueprint("views", __name__)
 
 @views.route("/", methods=["GET", "POST"])
 @login_required
 def home():
-#    return "<h1>Test</h1>"
     if request.method == "POST":
         print("this is where it goes")
         note = request.form.get("note")
@@ -36,21 +34,14 @@ def home():
 
     return render_template("home.html", user=current_user)
 
-# @views.route(note.note_title+hashlib.sha256(note.encode()), methods=["GET"])
-# /viewnote/<noteid>
-# @views.route("/viewnote", methods=["GET"])
 @views.route("/viewnote", methods=["POST"])
 def viewnote():
     noteid = request.form.get("hidden_note_id")
-    # return f'{ noteid } is the note id'
     note = Note.query.get(noteid)
     return render_template("note.html", user=current_user, note=note)
 
 @views.route("/testing", methods=["POST"])
 def go_back():
-    # noteid = request.form.get("hidden_note_id")
-    # return f'{ noteid } is the note id'
-    # note = Note.query.get(noteid)
     return render_template("home.html", user=current_user)
 
 @views.route("/delete-note", methods=["POST"])
